@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Everything 2x</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup-shell">
+      <header class="header">
+        <img class="header-icon" src="icons/icon-48.png" alt="" />
+        <div class="header-copy">
+          <h1>Everything 2x</h1>
+          <p id="connectionStatus" class="status-line" role="status" aria-live="polite">
+            Loading settings
+          </p>
+        </div>
+      </header>
+
+      <section class="speed-panel" aria-labelledby="speedHeading">
+        <div>
+          <h2 id="speedHeading">Default Speed</h2>
+          <p id="enabledText" class="muted">Enabled</p>
+        </div>
+        <output id="speedValue" class="speed-value" for="speedSlider">2.0x</output>
+      </section>
+
+      <label class="switch-control" for="enabledToggle">
+        <input
+          id="enabledToggle"
+          type="checkbox"
+          role="switch"
+          aria-labelledby="toggleLabel"
+        />
+        <span class="switch-ui" aria-hidden="true"></span>
+        <span id="toggleLabel" class="switch-label">Enabled</span>
+      </label>
+
+      <div class="slider-row">
+        <input
+          id="speedSlider"
+          class="speed-slider"
+          type="range"
+          min="0.25"
+          max="4"
+          step="0.05"
+          value="2"
+          aria-label="Default playback speed"
+          aria-valuemin="0.25"
+          aria-valuemax="4"
+          aria-valuenow="2"
+          aria-valuetext="2.0x"
+        />
+      </div>
+
+      <div class="preset-grid" role="group" aria-label="Speed presets">
+        <button class="preset-button" type="button" data-speed="1">1x</button>
+        <button class="preset-button" type="button" data-speed="1.25">1.25x</button>
+        <button class="preset-button" type="button" data-speed="1.5">1.5x</button>
+        <button class="preset-button" type="button" data-speed="1.75">1.75x</button>
+        <button class="preset-button" type="button" data-speed="2">2x</button>
+        <button class="preset-button" type="button" data-speed="2.5">2.5x</button>
+        <button class="preset-button" type="button" data-speed="3">3x</button>
+        <button class="preset-button" type="button" data-speed="4">4x</button>
+      </div>
+
+      <button id="applyNow" class="apply-button" type="button">
+        Apply to current tab now
+      </button>
+
+      <footer class="popup-footer">
+        <span>Made by Victor Humenhuk</span>
+        <span class="separator" aria-hidden="true">·</span>
+        <a
+          href="https://x.com/victorhumenhuk"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-link"
+        >@victorhumenhuk on X</a>
+      </footer>
+    </main>
+
+    <script src="shared.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

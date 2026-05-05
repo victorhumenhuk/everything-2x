@@ -1,72 +1,56 @@
-**Privacy Policy — Everything 2x**
+# Privacy Policy — Everything 2x
 
-Last updated: April 2026
+Last updated: May 5, 2026
 
-This Privacy Policy explains how **Everything 2x** handles your data. It is available as a Chrome extension and as a Safari Web Extension for macOS and iOS. Developed by Victor Humenhuk.
+Everything 2x is a Chrome extension developed by Victor Humenhuk. It sets video and audio elements to your chosen default playback speed.
 
-**In short**
+## Summary
 
-- No data leaves your device.
-- No tracking, no analytics, no ads.
-- Nothing is saved to disk, not even your per-tab speed settings.
+- No data leaves your browser.
+- No tracking, analytics, ads, telemetry, or remote code.
+- Settings are stored only in Chrome's extension storage.
+- The extension does not sell, share, or transmit user data.
 
-**What the Extension does**
+## What the extension does
 
-Everything 2x automatically plays videos at 2x speed, while detecting music videos and keeping them at normal speed. All detection happens locally in your browser.
+Everything 2x applies your chosen playback speed to HTML5 `<video>` and `<audio>` elements on websites you visit. It runs content scripts on pages so it can detect media elements, apply the rate, and re-apply it when a site resets playback to 1.0x.
 
-**What it collects**
+## Data collection
 
-Nothing. The Extension does not collect, store, transmit, or share:
+The extension does not collect, store, transmit, or share:
 
-- Personal information (name, email, identifiers)
-- Browsing history or web activity
-- Authentication or financial information
+- Personal information
+- Browsing history
+- Web page content
+- Account data
 - Location data
-- Website content
 - Analytics or telemetry
+- Authentication, financial, or payment information
 
-**How detection works**
+## Data storage
 
-The Extension reads page metadata (title, structured data, YouTube category) locally in your browser to decide whether a video is music content. This analysis happens entirely on your device. No page content or metadata is sent to any server.
+The extension stores only your settings:
 
-**Data storage**
+- Enabled or disabled state
+- Default playback speed
 
-None persisted. Per-tab speed overrides are held in memory only and reset when the tab is closed. Nothing is written to disk or synced externally.
+These settings are stored in `chrome.storage.sync` so Chrome can sync them across your signed-in Chrome browsers. If sync storage is unavailable, the extension falls back to local extension storage. Settings are not sent to Victor Humenhuk or to any third-party server by this extension.
 
-**Data sharing**
+## Network requests
 
-None. The Extension makes no external network requests and talks to no servers. No data is sold, transferred, or disclosed to any third party.
+Everything 2x does not make external network requests. All JavaScript is bundled with the extension. There is no remote code, analytics SDK, tracking pixel, or telemetry endpoint.
 
-**Third-party services**
+## Permissions
 
-None. No analytics, advertising, or tracking of any kind.
+- `storage`: saves your chosen speed and enabled state.
+- Host access (`<all_urls>`): lets the content script detect and control media elements on every site and iframe.
 
-**Permissions**
+The extension does not request the `tabs` permission.
 
-**Chrome**
+## Changes
 
-- `tabs`: send speed control messages between the popup and the active tab.
-- Host access (`<all_urls>`): inject a content script that controls video playback speed on any page. Not used to read, collect, or transmit page content.
+If this policy changes, the updated version will be published at this URL.
 
-**Safari (macOS and iOS)**
+## Contact
 
-- `activeTab`: interact with the page you're currently viewing.
-- Website access (all websites): inject a content script that controls video playback speed. Safari requires you to grant this, and you can revoke or limit it to specific sites at any time in Safari settings.
-
-**Apple privacy**
-
-On iOS and macOS, the Extension runs inside Apple's App Sandbox and WebExtensions security model. It does not access other apps, the clipboard, camera, microphone, location, contacts, or any other protected resource. No App Tracking Transparency disclosure is needed because no tracking occurs.
-
-**Children's privacy**
-
-The Extension does not knowingly collect data from anyone, including children under 13.
-
-**Changes**
-
-If this policy changes, the new version will appear at this URL with an updated date.
-
-**Contact**
-
-- Chrome Web Store support contact (Chrome version).
-- App Store support link (macOS and iOS versions).
-- Email: **victor@thesmios.com**
+Victor Humenhuk: victor@thesmios.com
