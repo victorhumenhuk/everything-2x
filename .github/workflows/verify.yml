@@ -17,12 +17,14 @@ jobs:
           jq empty manifest.json
           echo "Manifest is valid JSON"
 
-      - name: Check for forbidden permissions
+      - name: Check forbidden permissions are absent
         run: |
-          if jq -e '.permissions[]? | select(. == "tabs")' manifest.json; then
-            echo "ERROR: 'tabs' permission found in manifest"
-            exit 1
-          fi
+          for perm in tabs activeTab scripting webNavigation cookies webRequest; do
+            if jq -e --arg p "$perm" '.permissions[]? | select(. == $p)' manifest.json; then
+              echo "ERROR: forbidden permission '$perm' found in manifest"
+              exit 1
+            fi
+          done
           echo "No forbidden permissions"
 
       - name: Check version is set
@@ -33,6 +35,18 @@ jobs:
             exit 1
           fi
           echo "Version: $VERSION"
+
+      - name: Check no funding-link references remain
+        run: |
+          BLOCKED_PATTERN="(ko[-]?fi|d[o]nat(e|ion|ing)?|supp[o]rt development|supp[o]rt me|buy me a c[o]ffee|buymeac[o]ffee|tip[[:space:]]jar|tipj[a]r|sp[o]nsor|p[a]treon|p[a]ypal[.]me|github sp[o]nsors)"
+          if grep -ri -E "${BLOCKED_PATTERN}" \
+              --include="*.js" --include="*.html" --include="*.css" \
+              --include="*.json" --include="*.md" \
+              --exclude-dir=".git" --exclude-dir="node_modules" .; then
+            echo "ERROR: funding-link references still present"
+            exit 1
+          fi
+          echo "No funding-link references found"
 
       - name: Validate JS syntax
         run: |

@@ -7,7 +7,6 @@ OUT="dist/everything-2x-v${VERSION}.zip"
 mkdir -p dist
 rm -f "${OUT}"
 
-# Include only the files Chrome needs
 zip -r "${OUT}" . \
   -x "*.git*" \
   -x "*.DS_Store" \
@@ -16,7 +15,6 @@ zip -r "${OUT}" . \
   -x "scripts/*" \
   -x "*.md" \
   -x "LICENSE" \
-  -x "Privacy Policy" \
   -x ".gitignore" \
   -x ".vscode/*" \
   -x ".idea/*"
